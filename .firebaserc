@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "imarachinfirebaseprojekty": {
+      "hosting": {
+        "Firebase-ToDoList": [
+          "imarachinfirebaseprojekty"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "imarachinfirebaseprojekty"
+  }
+}
