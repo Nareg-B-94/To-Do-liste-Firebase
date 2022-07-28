@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Firestore, collectionData, collection } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, setDoc, doc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -8,13 +8,22 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  todos$: Observable<any[]>;
-  constructor(firestore: Firestore) {
-    const coll = collection(firestore, "Todo's");
-    this.todos$ = collectionData(coll);
+  Todos$: Observable<any[]>;
+  todotext = '' ;
+  // todos:Array<any>;
+  constructor(private firestore: Firestore) {
+    const coll = collection(firestore, 'Todos');
+    this.Todos$ = collectionData(coll);
 
-    this.todos$.subscribe((newTodos)=> {
-      console.log('neue Todos sind:', newTodos);
-    })
+    // this.Todos$.subscribe((newTodos) => {
+    //   console.log('neue Todos sind:', newTodos);
+    //   this.todos = newTodos;
+    // });
+  }
+
+  addTodo() {
+const coll = collection(this.firestore, 'Todos');
+setDoc(doc(coll), {name: this.todotext});
   }
 }
+
